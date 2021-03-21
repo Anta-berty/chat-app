@@ -1,4 +1,4 @@
-const middleware = require('../utils');
+const middleware = require('../utils'); // Pour vérifier la validité du token et récupérer l'user si le token est bien renseigné
 
 module.exports = (app) => {
     const messages = require('../controllers/message.controller.js');

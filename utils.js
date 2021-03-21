@@ -21,7 +21,7 @@ let checkToken = (req, res, next) => {
   } else {
     return res.status(451).json({
       success: false,
-      message: 'Auth token is not supplied'
+      message: 'Auth token is not supplied, inaccessible'
     });
   }
 };

@@ -1,5 +1,5 @@
-const utils = require('../utils');
-const Message = require('../models/message.model.js');
+const utils = require('../utils'); // Pour vérifier la validité du token et récupérer l'user si le token est bien renseigné
+const Message = require('../models/message.model.js'); // Récupérer la base de données
 
 // Create and Save a new Message in channel
 exports.create = (req, res) => {

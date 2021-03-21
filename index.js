@@ -1,7 +1,7 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
-const cors = require('cors')
+const express = require('express'); // Framework sur Node.js basé sur la construction des Applications Web
+const bodyParser = require('body-parser'); //c'est le middleware de JSON
+const mongoose = require('mongoose'); // Base de données
+const cors = require('cors') // Permet d'autorise l'accès à des ressources situées sur une autre origine que le site courant
 
 // create express app
 const app = express();

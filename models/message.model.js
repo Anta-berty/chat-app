@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+//Create Table Messages
 const MessageSchema = mongoose.Schema({
     author: {
         type: mongoose.Schema.Types.ObjectId,
