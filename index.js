@@ -1,19 +1,21 @@
+
+const { auth } = require('./routes/wayuser.js');
 const express = require('express'); // Framework sur Node.js basé sur la construction des Applications Web
-const bodyParser = require('body-parser'); //c'est le middleware de JSON
-const mongoose = require('mongoose'); // Base de données
+//const bodyParser = require('body-parser'); //Traducteur pour JSON au niveau du serveur
+const mongoose = require('mongoose'); // Lien à la base de données
 const cors = require('cors') // Permet d'autorise l'accès à des ressources situées sur une autre origine que le site courant
 
 // create express app
 const app = express();
 
 // CORS
-app.use(cors());
+app.use(cors()); // Liste des IP autorisés.
 
 // parse requests of content-type - application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(express.urlencoded({ extended: false }))
 
 // parse requests of content-type - application/json
-app.use(bodyParser.json())
+app.use(express.json())
 
 // Configuring the database
 const dbConfig = require('./database.config.js');
@@ -35,10 +37,13 @@ app.get('/', (req, res) => {
     res.json({"message": "Welcome to slack like application."});
 });
 
-require('./routes/user.routes.js')(app);
-require('./routes/message.routes.js')(app);
+
+//const routeMessage = require('./routes/message.routes.js')(app);
+
+app.use('/user', auth)
+
 
 // listen for requests
 app.listen(8000, () => {
     console.log("Server is listening on port 8000");
-});
+})
