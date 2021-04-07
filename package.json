@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start-server": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "front-dev": "parcel --out-dir ./public ./frontend/index.html"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",

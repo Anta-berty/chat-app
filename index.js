@@ -1,5 +1,4 @@
 
-const { auth } = require('./routes/wayuser.js');
 const express = require('express'); // Framework sur Node.js basé sur la construction des Applications Web
 //const bodyParser = require('body-parser'); //Traducteur pour JSON au niveau du serveur
 const mongoose = require('mongoose'); // Lien à la base de données
@@ -37,10 +36,7 @@ app.get('/', (req, res) => {
     res.json({"message": "Welcome to slack like application."});
 });
 
-
 //const routeMessage = require('./routes/message.routes.js')(app);
-
-app.use('/user', auth)
 
 
 // listen for requests
