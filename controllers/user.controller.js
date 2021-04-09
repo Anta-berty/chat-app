@@ -39,6 +39,9 @@ exports.login = (req, res) => {
                         expiresIn: '24h' // expires in 24 hours
                     }
                 );
+                
+                //Creation of Session for User
+
                 // return the JWT token for the future API calls
                 res.json({
                     success: true,
@@ -85,6 +88,9 @@ exports.create = (req, res) => {
         password: req.body.password
     });
 
+    // Encryption of Password
+
+    await bcrypt.hash(password, 10)
     // Save User in the database
     user.save()
     .then(data => {
