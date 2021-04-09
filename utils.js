@@ -2,6 +2,8 @@
 let jwt = require('jsonwebtoken');
 const config = require('./token.config');
 
+//IMPORTER TABLE OF USER
+
 let checkToken = (req, res, next) => {
   let token = req.headers.authorization;
 
@@ -15,13 +17,14 @@ let checkToken = (req, res, next) => {
         });
       } else {
         req.decoded = decoded;
+        
         next();
       }
     });
   } else {
     return res.status(451).json({
       success: false,
-      message: 'Auth token is not supplied, inaccessible'
+      message: 'Authentification token is not supplied, inaccessible'
     });
   }
 };

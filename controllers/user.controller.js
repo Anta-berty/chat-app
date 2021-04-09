@@ -1,9 +1,25 @@
-"const User = require('../models/user.model.js');
-const config = require('../token.config');
-let jwt = require('jsonwebtoken');
+const User      = require('../models/user.model.js');
+const config    = require('../token.config');
+let jwt         = require('jsonwebtoken');
+const bcrypt    = require('bcryptjs');
+
+//Register process En cryption password
+
+// const register = (req, res) => {
+        
+//     bcrypt.hash(req.body.password, 10, function(err, hashedPass){
+
+//         if(err){
+//             res.json({
+//                 error:err
+//             })
+//         }
+//     })
+// }
 
 // Login a user
 exports.login = (req, res) => {
+
     let username = req.body.username;
     let password = req.body.password;
 
@@ -15,6 +31,7 @@ exports.login = (req, res) => {
             });            
         }
         if (username && password) {
+            // C'est quoi le mockedUsername ??????
             if (username === mockedUsername && password === mockedPassword) {
                 let token = jwt.sign({_id: user._id,username: username},
                     config.secret,
@@ -29,7 +46,7 @@ exports.login = (req, res) => {
                     token: token
                 });
             } else {
-                res.send(403).json({
+                res.send(403).json({ 
                     success: false,
                     message: 'Incorrect username or password'
                 });
@@ -62,7 +79,7 @@ exports.create = (req, res) => {
         });
     }
 
-    // Create a User
+    // Create an User
     const user = new User({
         username: req.body.username,
         password: req.body.password
@@ -79,7 +96,7 @@ exports.create = (req, res) => {
         );
         res.json({
             success: true,
-            message: 'Authentication successful!',
+            message: 'Authentication successfully!',
             token: token
         });
     }).catch(err => {

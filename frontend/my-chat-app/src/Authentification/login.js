@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom'
+// import {Link} from 'react-router-dom'
 
 const Login = ()=>{
 
@@ -23,11 +23,11 @@ const Login = ()=>{
                     </label>
                 </div>
 
-                <Link to='/users'>
+                {/* <Link to='/users'>
                     <div>
                         Create an account
                     </div>
-                </Link>
+                </Link> */}
 
                 <button type="submit">
                     login

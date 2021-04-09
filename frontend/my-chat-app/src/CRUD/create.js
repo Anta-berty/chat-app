@@ -10,12 +10,13 @@ const Create = ()=>{
 
     //Fonction for submit the creation
 
-    const submitCreationUser = () =>{
+    const addUser = () =>{
 
        Axios.post("http://localhost:8000/users", {
            username : username,
            password : password
        })
+
 
     }
     
@@ -47,7 +48,7 @@ const Create = ()=>{
 
                 
                     <button type="submit" 
-                    onClick={submitCreationUser }>
+                    onClick={addUser}>
                         Submit
                     </button>
                 

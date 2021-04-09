@@ -1,6 +1,5 @@
-
 const express = require('express'); // Framework sur Node.js basé sur la construction des Applications Web
-//const bodyParser = require('body-parser'); //Traducteur pour JSON au niveau du serveur
+const bodyParser = require('body-parser'); //Traducteur pour JSON au niveau du serveur
 const mongoose = require('mongoose'); // Lien à la base de données
 const cors = require('cors') // Permet d'autorise l'accès à des ressources situées sur une autre origine que le site courant
 
@@ -11,10 +10,12 @@ const app = express();
 app.use(cors()); // Liste des IP autorisés.
 
 // parse requests of content-type - application/x-www-form-urlencoded
-app.use(express.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: true }))
 
 // parse requests of content-type - application/json
-app.use(express.json())
+app.use(bodyParser.json())
+
+
 
 // Configuring the database
 const dbConfig = require('./database.config.js');
@@ -36,10 +37,14 @@ app.get('/', (req, res) => {
     res.json({"message": "Welcome to slack like application."});
 });
 
-//const routeMessage = require('./routes/message.routes.js')(app);
+// Constantes des routes
+require('./routes/user.routes.js')(app);
+require('./routes/message.routes.js')(app); 
 
 
 // listen for requests
 app.listen(8000, () => {
     console.log("Server is listening on port 8000");
 })
+
+// app.use('/', UserRoute )
